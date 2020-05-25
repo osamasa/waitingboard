@@ -3,14 +3,15 @@
     <b-container fluid  class="bv-example-row">
       <b-row>
 	<b-col cols="9">
-	  <b-jumbotron border-variant="dark" v-b-tooltip.hover title="順番をドラッグ＆ドロップで変更することも出来ます">
+	  <b-jumbotron border-variant="dark" >
 	    <template v-slot:header>診察中</template>
 	    <draggable class="list-group" :list="list1" :group="{name: 'people', pull: this.draggable, put: this.draggable}" :sort="this.draggable">
               <div
 		class="list-group-item"
 		v-for="(element, index) in list1"
+		v-b-tooltip.hover title="ダブルクリックするとQRコードが表示されます"      
 		@dblclick="showqrcode"
-		v-b-tooltip.hover title="診療が終わった番号を「終了」に移動させます"
+
 		:key="element.id"		
 		>
 		<h1>{{ element.id }}</h1>
@@ -24,8 +25,9 @@
             <div
 	      class="list-group-item"
 	      v-for="(element, index) in list4"
+	      		v-b-tooltip.hover title="ダブルクリックするとQRコードが表示されます"      
 	      @dblclick="showqrcode"
-	      v-b-tooltip.hover title="本当に削除したい場合は削除をクリックします"
+
 	      :key="element.id"
 	      >
 	      <h3>{{ element.id }}&nbsp;<b-button @click="delList4( element.id )" variant="danger">削除</b-button></h3>
@@ -42,9 +44,10 @@
               <div
 		class="list-group-item"
 		v-for="(element, index) in list2"
+		v-b-tooltip.hover title="ダブルクリックするとQRコードが表示されます"      
 		@dblclick="showqrcode"
 		:key="element.id"
-		v-b-tooltip.hover title="次に診療で呼ぶ番号を「診察中」に移動させましょう"
+
 		>
 		<h1>{{ element.id }}</h1>
               </div>
@@ -54,7 +57,7 @@
 	<b-col cols="6">    
 	  <b-jumbotron>
 	    <template v-slot:header>待機中(外)</template>
-	    <draggable class="list-group" :list="list3" :group="{name: 'people', pull: this.draggable, put: this.draggable}" :sort="this.draggable" v-b-tooltip.hover title="まもなく診察の順番になる番号を中で待ってもらうために「待機中（内）」に移動させましょう">
+	    <draggable class="list-group" :list="list3" :group="{name: 'people', pull: this.draggable, put: this.draggable}" :sort="this.draggable" >
               <div
 		class="list-group-item"
 		v-for="(element, index) in list3"
@@ -69,7 +72,7 @@
       </b-row>
     </b-container>
     <div v-if="this.draggable" class="fixed-bottom d-flex flex-row-reverse p-2">
-      <button v-b-tooltip.hover title="新規受付された患者様に受付番号を付番します" @click="modalShow = !modalShow" type="button" class="btn btn-primary rounded-circle p-0" style="width:6rem;height:6rem;"><h1>＋</h1></button>
+      <button  @click="modalShow = !modalShow" type="button" class="btn btn-primary rounded-circle p-0" style="width:6rem;height:6rem;"><h1>＋</h1></button>
     </div>
     <b-modal
       id="modal-prevent-closing"
@@ -77,7 +80,7 @@
       @ok="addList3"
       centered title="付番">
       <p class="my-4">付番する番号を選択</p>
-      <form v-b-tooltip.hover title="新しい番号は待機中（外）の一番下に行きます" ref="form" @submit.stop.prevent="handleSubmit">
+      <form  ref="form" @submit.stop.prevent="handleSubmit">
 	<b-form-select v-model="selected" :options="soptions"></b-form-select>
       </form>
     </b-modal>
@@ -85,9 +88,10 @@
       id="modal-view-qr"
       ok-only
       v-model="qrmodalShow"
-      @ok="showqrcode"
-      centered title="QRコード">
-      <router-link to="/mobile"><b-img src="img/a6c8039ee45f6f3f7a7eb6e256ec3d4100f2cdd6.png" fluid-grow alt="携帯用QRコード"></b-img></router-link>
+      @ok="showqrcode"      
+      centered title="QRコード"
+      >
+      <router-link to="/mobile"><b-img v-b-tooltip.hover title="番号札とQRコードを先に印刷するのもありです"      src="img/a6c8039ee45f6f3f7a7eb6e256ec3d4100f2cdd6.png" fluid-grow alt="携帯用QRコード"></b-img></router-link>
     </b-modal>    
   </div>
 </template>
@@ -95,7 +99,7 @@
 <script>
 import draggable from "vuedraggable";
 export default {
-    name: "three-lists",
+    name: "WatingRoom",
     components: {
 	draggable
     },
