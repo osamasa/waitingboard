@@ -69,3 +69,4 @@ https://waitingboard.web.app/mobile
 
 # 履歴
 * 20200525 DEMOサイトを立ち上げる
+* 20200526 色による業務分別機能を追加
