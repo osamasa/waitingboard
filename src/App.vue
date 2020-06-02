@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/">受付</router-link> |
       <router-link to="/about">待合室</router-link> |
-      <router-link to="/mobile">携帯</router-link>      
+      <router-link to="/mobile/8">携帯</router-link>      
     </div>
     <router-view/>
   </div>

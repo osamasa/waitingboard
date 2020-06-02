@@ -22,7 +22,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
       {
-	  path: '/mobile',
+	  path: '/mobile/:myid',
 	  name: 'mobile',
 	  component: () => import('./views/Mobile.vue')	  
       }

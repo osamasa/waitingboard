@@ -22,8 +22,8 @@ export default new Vuex.Store({
 	],
 	delete1: [],
 	areanames : {
-	    'area1' : '診察室',
-	    'area2' : '待合室',
+	    'area1' : '診察室の中',
+	    'area2' : '待合室の中',
 	    'area3' : '外',				
 	},
 	limitnum : [
@@ -31,7 +31,7 @@ export default new Vuex.Store({
 	    {num : 2 , message : 'お近くまでいらしてください', color : 'warning' },
 	    {num : 5 , message : '間もなくなのでご準備ください', color : 'primary' },		
 	    {num : 999 , message : 'しばらくお待ちください', color : 'info' },		
-	}	
+	]	
     },
     mutations: {
 	setArea1: (state, payload) => {
